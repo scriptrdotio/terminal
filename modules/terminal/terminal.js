@@ -269,6 +269,7 @@ jQuery(document).ready(
           }
         }      
       )
+ter = t    
       
       var token = GetURLParameter('token') || SCRIPTR_TOKEN
       if (token) t.exec("set token="+token, true)
@@ -280,25 +281,23 @@ jQuery(document).ready(
       var autoexecUrl = '../../Autoexec.terminal' + (token?"?auth_token="+token:"")  
       
       jQuery.get(autoexecUrl, function(data) {
+        t.history().disable() // execute before pause, it doesn't work after
         t.pause()
-        // we don't want autoexec in the history, suppress history saving when running autoexec 
-        t.history_state(true) // TODO: this doesn't seem to be working
+        // we don't want autoexec commands in the history, suppress history saving when running autoexec 
         t.echo("Autoexec.terminal found. Running it:")
         data.split("\n").forEach(function(command) {
           if (!(command.trim().indexOf('#')==0)) t.exec(command, true)
         })
-        t.history_state(false)
         t.resume()
+        t.history().enable()
       });
 
       t.pause()
       var command = GetURLParameter('command')
       if (command) t.exec(command)
       t.resume()
-termi=t    
     })
 
-    
     //setup(t)
   }
 )

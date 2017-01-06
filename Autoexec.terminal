@@ -1,3 +1,4 @@
+# Commands in Autoexec.terminal, will be execute when the terminal is started
+#  they can be used to set various defaults such as token, url, mapCommand etc.
+#  mapCommand devices/execute id method -description This sends a message to a device
 echo mapping frequent commands for easier invocation
-echo e.g.: mapCommand devices/execute id method -description This sends a message to a device
-echo  
