@@ -1,3 +1,12 @@
+window.scriptr = {
+  terminal: {
+    token: "",
+    url: "",
+    commands: new Commands(),
+    prompt: "scriptr.io>"
+  } 
+}
+
 function GetURLParameter(sParam) {
   var sPageURL = window.location.search.substring(1);
   var sURLVariables = sPageURL.split('&');
@@ -236,6 +245,7 @@ jQuery(document).ready(
   function($) {
   	window.scriptrCommands = new Commands()
 
+
     $("#helpSection").load('help.html', function() {
       var welcome = $("#welcome").html()
       var greeting = $("#greeting").html()
@@ -245,7 +255,7 @@ jQuery(document).ready(
        function(command, term) {
          window.scriptrCommands.exec(command, term)
         }, { 
-          prompt: 'scriptr.io>', 
+          prompt: window.scriptr.prompt, 
           greetings: "", 
           historyFilter: function (h) {
             var t = h.trim().split(" ")
@@ -259,13 +269,13 @@ jQuery(document).ready(
           }
         }      
       )
+      
+      var token = GetURLParameter('token') || SCRIPTR_TOKEN
+      if (token) t.exec("set token="+token, true)
 
       t.echo(welcome, {raw:true})
       t.echo(greeting, {raw:true})
       window.terminal = t
-
-      var token = GetURLParameter('token')
-      if (token) t.exec("set token="+token, true)
 
       var autoexecUrl = '../../Autoexec.terminal' + (token?"?auth_token="+token:"")  
       
@@ -288,7 +298,4 @@ jQuery(document).ready(
     
     //setup(t)
   }
-);
-
-
-
+)
