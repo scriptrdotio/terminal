@@ -29,10 +29,12 @@ jQuery(document).ready(function($) {
         switch(t[0].trim()) {
           case "token":
             SCRIPTR_TOKEN=t[1].trim()
+            term.pause()
               getUser(function(userId) {
+            	term.resume()
                 if (!userId) {
                   term.echo("Bad token!") 
-                  term.echo("")
+                  term.echo(" ")
                   userId=""
                 }
                 term.set_prompt(userId+"&zwnj;@"+scriptr.terminal.prompt)
@@ -42,8 +44,6 @@ jQuery(document).ready(function($) {
             SCRIPTR_URL=t[1].trim()
             break;
         }
-
-        term.echo(" ")
       } else {
         displayVariables(term)
       }
