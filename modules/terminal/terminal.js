@@ -101,7 +101,11 @@ function Commands() {
       scriptrCommand = t[0]
 
       if (map[scriptrCommand]) map[scriptrCommand].handler(params, term);
-      else if (command.trim()!="") term.exec("post "+command) //map["post"].handler(command, term)
+      else if (command.trim()!="") {
+        term.history().disable()
+        term.exec("post "+command)
+        term.history().enable()
+      } //map["post"].handler(command, term)
     }
   }
   
@@ -145,9 +149,10 @@ function Commands() {
   this.add({
     command: 'history',
     handler: function(params, term) {
-      term.history().data().forEach(function(h) {term.echo(h)})
+      if (params && (params.trim()=='-clear')) term.history().clear();
+      else term.history().data().forEach(function(h) {term.echo(h)})
     },
-    help: "Shows list of typed in commands."
+    help: {id: "help-history"}
   })
 
   this.add({
@@ -158,6 +163,17 @@ function Commands() {
     help: "Clears the screen."
   })
   
+  this.add({
+    command: 'about',
+    handler: function(params, term) {
+      var welcome = $("#welcome").html()
+      var greeting = $("#greeting").html()
+      term.echo(welcome, {raw:true})
+      term.echo(greeting, {raw:true})
+    },
+    help: "try it!"
+  })
+
   this.add({
     command: 'echo',
     handler: function(params, term) {
@@ -251,7 +267,7 @@ jQuery(document).ready(
       var greeting = $("#greeting").html()
 
 
-      var t=$('body').terminal(
+      var t=$('#terminal').terminal(
        function(command, term) {
          window.scriptrCommands.exec(command, term)
         }, { 
@@ -269,14 +285,12 @@ jQuery(document).ready(
           }
         }      
       )
-ter = t    
       
       var token = GetURLParameter('token') || SCRIPTR_TOKEN
       if (token) t.exec("set token="+token, true)
 
       t.echo(welcome, {raw:true})
       t.echo(greeting, {raw:true})
-      window.terminal = t
 
       var autoexecUrl = '../../Autoexec.terminal' + (token?"?auth_token="+token:"")  
       
@@ -284,7 +298,7 @@ ter = t
         t.history().disable() // execute before pause, it doesn't work after
         t.pause()
         // we don't want autoexec commands in the history, suppress history saving when running autoexec 
-        t.echo("Autoexec.terminal found. Running it:")
+        t.echo("Running commands listed in Autoexec.terminal -")
         data.split("\n").forEach(function(command) {
           if (!(command.trim().indexOf('#')==0)) t.exec(command, true)
         })

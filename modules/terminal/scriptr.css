@@ -1,18 +1,27 @@
+body {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+#terminal {
+  width: 100%;
+  height:100vh;
+}
 
 .terminal, .cmd {
-    font-family: monospace;
-    /*font-family: FreeMono, monospace; this don't work on Android */
-  
-  
+  font-family: monospace;
+  /*font-family: FreeMono, monospace; this don't work on Android */
 
-    color: orange;
-    background-color: #222;
+  color: orange;
+  background-color: #222;
 
   color: #111;
-    background-color: #FFF;
+  background-color: #FFF;
 
   font-size: 14px;
-    line-height: 14px;
+  line-height: 14px;
+
+  padding:0px;
 }
 .terminal-output > div {
     /*padding-top: 3px;*/
