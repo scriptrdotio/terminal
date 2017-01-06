@@ -281,10 +281,13 @@ jQuery(document).ready(
       
       jQuery.get(autoexecUrl, function(data) {
         t.pause()
+        // we don't want autoexec in the history, suppress history saving when running autoexec 
+        t.history_state(true) // TODO: this doesn't seem to be working
         t.echo("Autoexec.terminal found. Running it:")
         data.split("\n").forEach(function(command) {
           if (!(command.trim().indexOf('#')==0)) t.exec(command, true)
         })
+        t.history_state(false)
         t.resume()
       });
 
@@ -292,9 +295,9 @@ jQuery(document).ready(
       var command = GetURLParameter('command')
       if (command) t.exec(command)
       t.resume()
+termi=t    
     })
 
-    
     
     //setup(t)
   }
