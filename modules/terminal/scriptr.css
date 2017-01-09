@@ -1,6 +1,9 @@
 body {
   border: 0px;
-  margin: 0px;
+  margin-top: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 0px;
   padding: 0px;
 }
 #terminal {
@@ -16,12 +19,13 @@ body {
   background-color: #222;
 
   color: #111;
-  background-color: #FFF;
+  background-color: #fff;
 
   font-size: 14px;
   line-height: 14px;
 
   padding:0px;
+  
 }
 .terminal-output > div {
     /*padding-top: 3px;*/

@@ -84,5 +84,5 @@ jQuery(document).ready(function($) {
     },
     help: {id:"help-ws"}
   }
-  window.scriptrCommands.add(ws)
+  window.scriptr.terminal.Interpreter.add(ws)
 })

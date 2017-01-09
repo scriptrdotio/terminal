@@ -12,6 +12,14 @@
     <!-- link href="terminal.css" rel="stylesheet"/ -->    
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/0.11.23/css/jquery.terminal.min.css" rel="stylesheet"/>
     <link href="scriptr.css" rel="stylesheet"/>    
+    
+    <style>
+      #terminal {
+        height: 300px;
+        width: 300px;
+        background: #ccc;
+      }
+    </style>
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
@@ -24,17 +32,31 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     
     <script src="lib/mousewheel.min.js"></script>
-    <script src="config.js"></script>
-    <script src="terminal.js"></script>
-    <script src="commands/set.js"></script>
-    <script src="commands/rest.js"></script>
-    <script src="commands/ws.js"></script>
-    <script src="commands/list.js"></script>
-    <script src="commands/mqtt.js"></script>
+    <script>
+      jQuery(document).ready(function($) {
+
+        tty=$('#terminal').terminal(
+         function(command, term) {
+          }, { 
+            prompt: "$", 
+            greetings: "bonjour", 
+            historyFilter: function (h) {
+              var t = h.trim().split(" ")
+
+              if (t.length>1) {
+                var arg=(t[1].split("="))[0]
+                if ((t[0]=='set') && (arg=='token')) return false
+              } 
+
+              return true
+            }
+          }      
+        )
+      
+      })
+    </script>
   </head>
 <body>
   <div id="terminal">
-  </div>
-  <div id="helpSection" style="display:none;">
   </div>
 </body>

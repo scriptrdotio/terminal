@@ -62,7 +62,7 @@ function registerHTTPVerb(method) {
     $.ajax(p)
   }
 
-  window.scriptrCommands.add({
+  window.scriptr.terminal.Interpreter.add({
     command : method,
     handler : function(params, term){
       var script, showResponse=false, token

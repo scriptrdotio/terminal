@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
     $.ajax(p)
   }
 
-  window.scriptrCommands.add({
+  window.scriptr.terminal.Interpreter.add({
     command: "list",
     handler: function(params, term){
       var refresh=false

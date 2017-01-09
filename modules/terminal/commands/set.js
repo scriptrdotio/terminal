@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
     term.echo(" ")
   }
   
-  window.scriptrCommands.add({
+  window.scriptr.terminal.Interpreter.add({
     command: "set",
     handler: function(params, term){
       if (params) {
