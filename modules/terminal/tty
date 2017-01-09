@@ -48,7 +48,7 @@
         */
        var cssFiles = ['scriptr.css'];
        var jsFiles = ['lib/mousewheel.min.js', 'terminal.js', "commands/rest.js", 
-                      "commands/list.js", "commands/set.js", "commands/ws.js", "commands/mqtt.js"];
+                       "commands/set.js", "commands/ws.js", "commands/mqtt.js"];
 
        for (var i = 0; i < cssFiles.length; i++) {
            document.write('<link href="' 
