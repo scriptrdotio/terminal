@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
           if (showResponse) {
             term.echo(" ")
             term.echo("Script response" + (hiddenLog?" (hiding response.scriptLog):":":"))
-            term.echo(JSON.stringify(data,null,4))
+            term.echo("<pre>"+syntaxHighlight(JSON.stringify(data,null,4))+"</pre>",{raw:true})
           }
           term.echo(" ")
           term.echo("Request execution time: "+((new Date()).getTime()-timestamp)+"ms",{raw:true})

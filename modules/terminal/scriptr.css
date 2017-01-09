@@ -12,21 +12,21 @@ body {
 }
 
 .terminal, .cmd {
-  font-family: monospace;
-  /*font-family: FreeMono, monospace; this don't work on Android */
+   font-family: monospace;
+   /*font-family: FreeMono, monospace; this don't work on Android */
+   color: orange;
+   background-color: #222;
 
-  color: orange;
-  background-color: #222;
-
-  color: #111;
-  background-color: #fff;
-
-  font-size: 14px;
-  line-height: 14px;
-
-  padding:0px;
-  
+   font-size: 14px;
+   line-height: 14px;
+   padding:0px;
 }
+
+.white {
+   color: #111;
+   background-color: #FFF;
+}
+
 .terminal-output > div {
     /*padding-top: 3px;*/
     min-height: 14px;

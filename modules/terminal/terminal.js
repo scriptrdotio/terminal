@@ -1,13 +1,3 @@
-/*
- *	Terminal globals
- */
-window.scriptr = {
-  terminal: {
-    token: "",
-    url: "api.scriptrapps.io",
-    prompt: "scriptr.io>"
-  }
-}
 
 // Modify underscore template variable delimiters to Mustache style 
 _.templateSettings = {
@@ -53,18 +43,6 @@ function syntaxHighlight(json) {
 /*
  *	Utility
  */
-function GetURLParameter(sParam) {
-  var sPageURL = window.location.search.substring(1);
-  var sURLVariables = sPageURL.split('&');
-  for (var i = 0; i < sURLVariables.length; i++) 
-  {
-    var sParameterName = sURLVariables[i].split('=');
-    if (sParameterName[0] == sParam) 
-    {
-      return sParameterName[1];
-    }
-  }
-}
 
 function parseForParam(command, paramName, expectJson) {
   var t = command.trim().split(paramName+" ")
@@ -79,8 +57,6 @@ function parseForParam(command, paramName, expectJson) {
     }
   }
 }
-
-
 
 
 /*
@@ -255,6 +231,25 @@ window.scriptr.terminal.Interpreter.add({
   help: "Map paramters to simplify invoking scripts from command line without having to create a JSON."
 })
 
+window.scriptr.terminal.Interpreter.add({
+  command: 'theme',
+  handler: function(params, term) {
+    switch(params.toLowerCase()){
+      case "default":
+        $('.terminal').removeClass('white');
+        $('.cmd').removeClass('white');
+        break;
+      case "white":
+        $('.terminal').addClass('white');
+        $('.cmd').addClass('white');
+        break;
+      default:
+        term.echo('Theme not found.')
+    }
+  },
+  help: "Changes the terminal theme. It can be either 'white' or 'default'."
+})
+
 /*
  * Load and execute Autoexec
  */
@@ -281,7 +276,17 @@ jQuery(document).ready(function($) {
           window.scriptr.terminal.Interpreter.exec(command)
         }, { 
           prompt: window.scriptr.prompt, 
-          greetings: ""
+          greetings: "",
+          historyFilter: function (h) {
+            var t = h.trim().split(" ")
+
+            if (t.length>1) {
+              var arg=(t[1].split("="))[0]
+              if ((t[0]=='set') && (arg=='token')) return false
+            } 
+
+            return true
+          }
         }      
       )
       
@@ -296,5 +301,7 @@ jQuery(document).ready(function($) {
       if (token) terminal.exec("set token="+token, true)
      
       autoexec(terminal)
+      
+      
   })
 })
