@@ -66,7 +66,7 @@ window.scriptr.terminal.Interpreter = (function () {
   var map = {}
   var term = null
   
-  window.scriptr.interpreter = this
+  window.scriptr.terminal.interpreter = this
 
   function add(command) {
     map[command.command]=command
@@ -254,7 +254,7 @@ window.scriptr.terminal.Interpreter.add({
  * Load and execute Autoexec
  */
 function autoexec(t) {
-  var autoexecUrl = '../../Autoexec.terminal' + (window.scriptr.token?"?auth_token="+window.scriptr.token:"")  
+  var autoexecUrl = '/Autoexec.terminal' + (window.scriptr.terminal.token?"?auth_token="+window.scriptr.terminal.token:"")  
 
   jQuery.get(autoexecUrl, function(data) {
     // we don't want autoexec commands in the history, suppress history saving when running autoexec 
@@ -270,12 +270,13 @@ function autoexec(t) {
 }
 
 jQuery(document).ready(function($) {
-  $("#helpSection").load('help.html', function(){
+  
+  $("#helpSection").load('help.html', {'auth_token': window.scriptr.terminal.token } , function(){
       var terminal = $('#terminal').terminal(
         function(command, term) {
           window.scriptr.terminal.Interpreter.exec(command)
         }, { 
-          prompt: window.scriptr.prompt, 
+          prompt: window.scriptr.terminal.prompt, 
           greetings: "",
           historyFilter: function (h) {
             var t = h.trim().split(" ")
@@ -297,8 +298,8 @@ jQuery(document).ready(function($) {
       terminal.echo(welcome, {raw:true})
       terminal.echo(greeting, {raw:true})
 
-      var token = GetURLParameter('token')
-      if (token) terminal.exec("set token="+token, true)
+      var token =  window.scriptr.terminal.token;
+      if (token) terminal.exec("set token="+token, true);
      
       autoexec(terminal)
       
