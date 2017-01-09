@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 
     term.pause()
 
-    var url = "https://api.scriptr.io/modules/terminal/backend/listScripts"
+    var url = "https://"+window.scriptr.terminal.url+"/modules/terminal/backend/listScripts"
     var timestamp = (new Date()).getTime()
 
     var p = {

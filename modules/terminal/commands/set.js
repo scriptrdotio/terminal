@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
   function getUser(f) {
     var p = {
-      url: "/modules/terminal/backend/info?auth_token="+SCRIPTR_TOKEN,
+      url: "/modules/terminal/backend/info?auth_token="+window.scriptr.terminal.token,
       method: "get",
       dataType: 'json',
       success: function(data) {
@@ -15,8 +15,8 @@ jQuery(document).ready(function($) {
   }
 
   function displayVariables(term) {
-    term.echo("token="+SCRIPTR_TOKEN)
-    term.echo("url="+SCRIPTR_URL)
+    term.echo("token="+window.scriptr.terminal.token)
+    term.echo("url="+window.scriptr.terminal.url)
     term.echo(" ")
   }
   
@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
 
         switch(t[0].trim()) {
           case "token":
-            SCRIPTR_TOKEN=t[1].trim()
+            window.scriptr.terminal.token=t[1].trim()
             term.pause()
               getUser(function(userId) {
             	term.resume()
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
                })
             break;
           case "url":
-            SCRIPTR_URL=t[1].trim()
+            window.scriptr.terminal.url=t[1].trim()
             break;
         }
       } else {

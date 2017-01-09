@@ -66,7 +66,7 @@ function registerHTTPVerb(method) {
     command : method,
     handler : function(params, term){
       var script, showResponse=false, token
-      var url = SCRIPTR_URL
+      var url = window.scriptr.terminal.url
 
       if (!params) {
         term.echo("No parameters provided. Nothing to do!")
@@ -84,7 +84,7 @@ function registerHTTPVerb(method) {
 
         var headers = {}   
 
-        if (SCRIPTR_TOKEN!="") headers['Authorization']='bearer '+SCRIPTR_TOKEN
+        if (window.scriptr.terminal.token!="") headers['Authorization']='bearer '+window.scriptr.terminal.token
 
         jQuery.extend(headers, parseForParam(params, "-h", true))
 

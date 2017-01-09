@@ -256,7 +256,7 @@ window.scriptr.terminal.Interpreter.add({
 })
 
 /*
- *
+ * Load and execute Autoexec
  */
 function autoexec(t) {
   var autoexecUrl = '../../Autoexec.terminal' + (window.scriptr.token?"?auth_token="+window.scriptr.token:"")  
@@ -287,14 +287,14 @@ jQuery(document).ready(function($) {
       
       window.scriptr.terminal.Interpreter.setTerminal(terminal)
 
-      var token = GetURLParameter('token') || SCRIPTR_TOKEN
-      if (token) terminal.exec("set token="+token, true)
-
       var welcome = $("#welcome").html()
       var greeting = $("#greeting").html()
       terminal.echo(welcome, {raw:true})
       terminal.echo(greeting, {raw:true})
-      
+
+      var token = GetURLParameter('token')
+      if (token) terminal.exec("set token="+token, true)
+     
       autoexec(terminal)
   })
 })

@@ -28,7 +28,7 @@ jQuery(document).ready(function($) {
 
       if (!window.websocketClient) {
         term.pause()
-        window.websocketClient = new WebSocket("wss://api.scriptr.io/" + SCRIPTR_TOKEN);
+        window.websocketClient = new WebSocket("wss://"+window.scriptr.terminal.url+"/" + window.scriptr.terminal.token);
       } else {
         term.pause()
         send(params, uid)
