@@ -5,7 +5,7 @@ function registerHTTPVerb(method) {
       script = script.substring(1,script.length);
     }
     
-    var url = (url.slice(-1) == "/") ? "/" + script : url + "/" + script;
+    var url = (url.slice(-1) == "/") ? "/" + script : "https://"+ url + "/" + script;
     var timestamp = (new Date()).getTime()
 
     var p = {

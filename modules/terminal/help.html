@@ -39,7 +39,7 @@ parameters:
  -nolog:	don't show logs
  -noresponse:	don't show response
 </pre>
-<br>example:<br>ws my/script -params {"humidity": "33", "temp": "22"} -noresponse -nolog<br>
+<br>example:<br>ws my/script -p {"humidity": "33", "temp": "22"} -noresponse -nolog<br>
 </div>
 
 <div id="help-rest">
@@ -52,7 +52,7 @@ parameters:
  -noresponse:	don't show response
  -repeat N:	repeat call N times and display average/min/max execution times [NOT IMPLEMENTED]
 </pre>
-<br>example:<br>{{ method }} my/script -params {"humidity": "33", "temp": "22"} -header {"header1":"value1"} -noresponse -nolog -repeat 10<br>
+<br>example:<br>{{ method }} my/script -p {"humidity": "33", "temp": "22"} -h {"header1":"value1"} -noresponse -nolog -repeat 10<br>
 </div>
 
 <div id="help-list">
