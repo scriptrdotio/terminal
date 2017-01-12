@@ -1,7 +1,10 @@
 function registerHTTPVerb(method) {
   function http(method, url, script, params, headers, showResponse, showLogs, repeat, term) {
     term.pause()
-
+	if(script.charAt(0) == "/"){
+      script = script.substring(1,script.length);
+    }
+    
     var url = (url.slice(-1) == "/") ? "/" + script : url + "/" + script;
     var timestamp = (new Date()).getTime()
 
