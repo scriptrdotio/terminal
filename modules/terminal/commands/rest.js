@@ -2,7 +2,7 @@ function registerHTTPVerb(method) {
   function http(method, url, script, params, headers, showResponse, showLogs, repeat, term) {
     term.pause()
 
-    var url = "https://"+url+"/"+script
+    var url = (url.slice(-1) == "/") ? "/" + script : url + "/" + script;
     var timestamp = (new Date()).getTime()
 
     var p = {

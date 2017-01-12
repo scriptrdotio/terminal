@@ -35,7 +35,7 @@
       window.scriptr = {
         terminal: {
           token: GetURLParameter("auth_token"),
-          url: "api.scriptrapps.io",
+          url: "/",
           debugChannel: "debug",
           prompt: "scriptr.io>"
         }
