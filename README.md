@@ -161,10 +161,10 @@ Script response (hiding response.metadata.scriptLog):
       "statusCode": "200"
     },
    "result": {
-		  "contentType": "application/x-www-form-urlencoded; charset=UTF-8"",
-		  "color" : "blue"
-	  }
-  }
+   	"contentType": "application/x-www-form-urlencoded; charset=UTF-8",
+	"color" : "blue"
+    }
+   }
 }
 ```
 #### ws
