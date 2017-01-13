@@ -1,5 +1,5 @@
 ## About Scriptr.io Terminal
-[Scriptr.io Terminal](https://api.scriptrapps.io/apsdb/rest/modules/terminal/tty) provides a rich set of commands for invoking endpoints using different protocols and options and displays a more readable formatting of JSON responses and logs. The terminal can be used with multiple servers and accounts using url/token interchange.
+Scriptr.io Terminal provides a rich set of commands for invoking endpoints using different protocols and options and displays a more readable formatting of JSON responses and logs. The terminal can be used with multiple servers and accounts using url/token interchange.
 
 ## Purpose of the scriptr.io connector for Terminal
 The purpose of this connector is to simplify invoking enpoints. It is also a very useful scriptr.io debugging tool.
@@ -24,91 +24,168 @@ Commands can be used to invoke certain functions.
 
 ### How To Use
 - Deploy the aforementioned scripts in your scriptr account, in a folder named "terminal" or access the Terminal directly using the tabs in the top right corner of the scriptr.io page
-- Create a test script in scriptr
 - Obtain access / anonymous tokens from scriptr.io Account pop-up
 
 ### AutoExec
-Commands in Autoexec.terminal, will be executed when the terminal is started. For example:
-Invoking:
+Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
+For example invoking:
 ```
-# Commands in Autoexec.terminal, will be execute when the terminal is started
-# they can be used to set various defaults such as token, url, mapCommand etc.
-# mapCommand devices/execute id method -description This sends a message to a device
-#
-# echo mapping frequent commands for easier invocation
 theme white
 ```
 Results in a white terminal.
 
 ### Using the Terminal
-This test script can be used an example to explain the commonly-used commands:
+Create a test script in scriptr.
 ```
 console.log(request.method);
-return request.headers['headers'] + " & " + request.parameters['params'];
+
+var returnedValue = {};
+if(request.headers['content-type']){
+ console.log('content type is set');
+ returnedValue['contentType']  = request.headers['content-type'];
+}
+
+if(request.parameters['color']){
+ console.log('color parameter is set');
+ returnedValue['color'] = request.parameters['color'];
+}
+
+return returnedValue;
 ```
+This test script can be used an example to explain the commonly-used commands:
+
 #### delete, get, option, patch, post, & put
 Invoking:
 ```
-test -p {"params": "p1"} -h {"headers":"h1"} 
+test -p {"color": "blue"} -h {"content-type":"text/plain"} 
 ```
 Results in:
 ```
 Log (extracted from response.metadata.scriptLog):
-2017-01-11 15:13:23.340logPOST
+2017-01-13 13:42:24,460 LOG 
+POST
+2017-01-13 13:42:24,460 LOG content type is set
+2017-01-13 13:42:24,460 LOG color parameter is set
 Script response (hiding response.metadata.scriptLog):
 ```
 ```json
 {
-"response": {
-"metadata": {
-"requestId": "e72535bf-7b68-4840-a4a7-1a9d137ef1cc",
-"status": "success",
-"statusCode": "200"
-},
-"result": "h1 & p1"
+  "response": {
+    "metadata": {
+      "requestId": "e72535bf-7b68-4840-a4a7-1a9d137ef1cc",
+      "status": "success",
+      "statusCode": "200"
+    },
+   "result": {
+		  "contentType": "text/plain",
+		  "color": "blue"
+	  }
+  }
 }
+```
+Invoking:
+```
+test -p {"color": "blue"} -h {"content-type":"text/plain"} -nolog
+```
+Results in:
+```
+Log (extracted from response.metadata.scriptLog):
+Script response (hiding response.metadata.scriptLog):
+```
+```json
+{
+    "response": {
+        "metadata": {
+            "requestId": "3c3eb5ea-bc78-423a-8a89-15de77c26b0e",
+            "status": "success",
+            "scriptLog": [
+                {
+                    "timestamp": "2017-01-13 13:51:22.718",
+                    "level": "log",
+                    "component": "test",
+                    "message": "POST"
+                },
+                {
+                    "timestamp": "2017-01-13 13:51:22.718",
+                    "level": "log",
+                    "component": "test",
+                    "message": "content type is set"
+                },
+                {
+                    "timestamp": "2017-01-13 13:51:22.718",
+                    "level": "log",
+                    "component": "test",
+                    "message": "color parameter is set"
+                }
+            ],
+            "statusCode": "200"
+        },
+        "result": {
+            "contentType": "text-plain",
+            "color": "blue"
+        }
+    }
 }
+```
+Invoking:
+```
+test -p {"color": "blue"} -h {"content-type":"text/plain"} -noresponse
+```
+Results in:
+```
+Log (extracted from response.metadata.scriptLog):
+2017-01-13 13:42:24,460 LOG POST
+2017-01-13 13:42:24,460 LOG content type is set
+2017-01-13 13:42:24,460 LOG color parameter is set
 ```
 #### mapCommand
 Invoking:
 ```
-mapCommand test params
-test p1
+mapCommand test color
+test blue
 ```
 Results in:
 ```
 Log (extracted from response.metadata.scriptLog):
-2017-01-11 15:33:44.864logPOST
+2017-01-13 13:42:24,460 LOG POST
+2017-01-13 13:42:24,460 LOG content type is set
+2017-01-13 13:42:24,460 LOG color parameter is set
 Script response (hiding response.metadata.scriptLog):
 ```
 ```json
 {
-"response": {
-"metadata": {
-"requestId": "c5432a90-5db2-4e85-8a00-97ab8dff2f5e",
-"status": "success",
-"statusCode": "200"
-},
-"result": "null & p1"
-}
+  "response": {
+    "metadata": {
+      "requestId": "e72535bf-7b68-4840-a4a7-1a9d137ef1cc",
+      "status": "success",
+      "statusCode": "200"
+    },
+   "result": {
+		  "contentType": "application/x-www-form-urlencoded; charset=UTF-8"",
+		  "color": "blue"
+	  }
+  }
 }
 ```
 #### ws
 Invoking:
 ```
-ws test -p {"params": "p1"}
+ws test -p {"color": "blue"}
 ```
 Results in:
 ```
 Log (extracted from response.scriptLog):
-2017-01-11 15:48:41.652logGET
+2017-01-13 13:42:24,460 LOG GET
+2017-01-13 13:42:24,460 LOG color parameter is set
 Script response (hiding response.scriptLog):
 ```
 ```json
 {
-"id": "bd15b05a-1484149721415",
-"status": "success",
-"statusCode": "200",
-"result": "null & p1"
+  "id": "bd15b05a-1484149721415",
+  "status": "success",
+  "statusCode": "200",
+  "result": {
+	  "color": "blue"
+	 }
 }
 ```
