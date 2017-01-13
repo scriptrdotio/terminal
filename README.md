@@ -122,7 +122,7 @@ Script response (hiding response.metadata.scriptLog):
         },
         "result": {
             "contentType" : "text-plain",
-            "color"` : "blue"
+            "color" : "blue"
         }
     }
 }
