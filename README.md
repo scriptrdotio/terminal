@@ -162,7 +162,7 @@ Script response (hiding response.metadata.scriptLog):
     },
    "result": {
 		  "contentType": "application/x-www-form-urlencoded; charset=UTF-8"",
-		  "color": "blue"
+		  "color" : "blue"
 	  }
   }
 }
