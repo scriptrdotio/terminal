@@ -57,7 +57,7 @@ This test script can be used an example to explain the commonly-used commands:
 #### delete, get, option, patch, post, & put
 Invoking:
 ```
-test -p {"color": "blue"} -h {"content-type":"text/plain"} 
+test -p {"color" : "blue"} -h {"content-type":"text/plain"} 
 ```
 Results in:
 ```
@@ -121,8 +121,8 @@ Script response (hiding response.metadata.scriptLog):
             "statusCode": "200"
         },
         "result": {
-            "contentType": "text-plain",
-            "color": "blue"
+            "contentType" : "text-plain",
+            "color"` : "blue"
         }
     }
 }
