@@ -24,7 +24,7 @@ Commands can be used to invoke certain functions.
 
 ### How To Use
 - Deploy the aforementioned scripts in your scriptr account, in a folder named "terminal" or access the Terminal directly using the tabs in the top right corner of the scriptr.io page
-- Obtain access / anonymous tokens from scriptr.io Account pop-up
+- Obtain access / anonymous tokens from scriptr.io Account overlay
 
 ### AutoExec
 Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
