@@ -213,7 +213,8 @@ window.scriptr.terminal.Interpreter.add({
         command: t[0],
         handler: function(params, term){
           var json = {}
-          params = params.split(" ")
+    
+          params = params ? params.split(" ") : [];
           i = 0
 
           params.forEach(function() {
