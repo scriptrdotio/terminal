@@ -57,7 +57,7 @@ This test script can be used an example to explain the commonly-used commands:
 #### delete, get, option, patch, post, & put
 Invoking:
 ```
-test -p {"color" : "blue"} -h {"content-type":"text/plain"} 
+test -p {"color" : "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} 
 ```
 Results in:
 ```
@@ -85,7 +85,7 @@ Script response (hiding response.metadata.scriptLog):
 ```
 Invoking:
 ```
-test -p {"color": "blue"} -h {"content-type":"text/plain"} -nolog
+test -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -nolog
 ```
 Results in:
 ```
@@ -121,7 +121,7 @@ Script response (hiding response.metadata.scriptLog):
             "statusCode": "200"
         },
         "result": {
-            "contentType" : "text-plain",
+            "contentType" : "application/x-www-form-urlencoded; charset=UTF-8",
             "color" : "blue"
         }
     }
@@ -129,7 +129,7 @@ Script response (hiding response.metadata.scriptLog):
 ```
 Invoking:
 ```
-test -p {"color": "blue"} -h {"content-type":"text/plain"} -noresponse
+test -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -noresponse
 ```
 Results in:
 ```
