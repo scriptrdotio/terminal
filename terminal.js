@@ -121,7 +121,7 @@ window.scriptr.terminal.Interpreter.add({
   handler: function(params, term) {
     term.echo(params)
   },
-  help: "try it!"
+  help: "Prints the name on screen."
 })
 
 window.scriptr.terminal.Interpreter.add({
