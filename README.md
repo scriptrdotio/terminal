@@ -8,17 +8,17 @@ The purpose of this connector is to simplify invoking enpoints. It is also a ver
 Commands can be used to invoke certain functions.
 - about: displays the Welcome to scriptr.io Terminal
 - clear: clears the screen
-- delete: invoke the HTTP delete method
+- delete: invokes the HTTP delete method
 - echo: prints the name on screen
-- get: invoke the HTTP get method
+- get: invokes the HTTP get method
 - help: invokes help
 - history: shows history of typed commands
-- mapCommand: map parameters to invoke scripts from command line without having to create a JSON
-- option: invoke the HTTP option method
-- patch: invoke the HTTP patch method
-- post: invoke the HTTP post method (Default if command is not entered)
-- put: invoke the HTTP put method
-- set: set various terminal options
+- mapCommand: maps parameters to invoke scripts from command line without having to create a JSON
+- option: invokes the HTTP option method
+- patch: invokes the HTTP patch method
+- post: invokes the HTTP post method (Default if command is not entered)
+- put: invokes the HTTP put method
+- set: sets various terminal options
 - theme: changes the terminal theme to white or default
 - ws: invokes an endpoint by using websocket connection
 
