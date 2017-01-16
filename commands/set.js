@@ -23,12 +23,12 @@ jQuery(document).ready(function($) {
   window.scriptr.terminal.Interpreter.add({
     command: "set",
     handler: function(params, term){
-
-       var t =params ?  params.split("=")  : []
-
+ 	 if (params && params.split("=").length > 1 ) {		 
+      	var t = params.split("=")  
+		
         switch(t[0].trim()) {
           case "token":
-            window.scriptr.terminal.token=t[1].trim()
+            window.scriptr.terminal.token = t[1].trim()
             term.pause()
               getUser(function(userId) {
             	term.resume()
