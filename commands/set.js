@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
   function getUser(f) {
     var p = {
-      url: "/modules/terminal/backend/info?auth_token="+window.scriptr.terminal.token,
+      url: "./backend/info?auth_token="+window.scriptr.terminal.token,
       method: "get",
       dataType: 'json',
       success: function(data) {
@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
       error: function(data) {
         f(null)
       }
-    }
+    } 
     $.ajax(p)
   }
 
