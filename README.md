@@ -181,9 +181,11 @@ Script response (hiding response.scriptLog):
 ```
 ```json
 {
-    "id": "c7c4b1d1-1484580473724",
+    "id": "c7c4b1d1-1484580791420",
     "status": "success",
     "statusCode": "200",
-    "result": "Color = blue"
+    "result": {
+        "color": "blue"
+    }
 }
 ```
