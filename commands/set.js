@@ -23,8 +23,8 @@ jQuery(document).ready(function($) {
   window.scriptr.terminal.Interpreter.add({
     command: "set",
     handler: function(params, term){
-      if (params) {
-        var t = params.split("=")  
+
+       var t =params ?  params.split("=")  : []
 
         switch(t[0].trim()) {
           case "token":
