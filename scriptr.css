@@ -41,7 +41,11 @@ body {
    animation-name: blink;
    animation-iteration-count: 1;
    animation-direction: alternate;
+   float: left;
 }
+
+.experimental {float: left; border-radius: 50px; background: #ff8c00; width: 28px; height: 28px; text-align: center;}
+.experimental img {margin-top: 3px;}
 
 @keyframes blink {
   from {
