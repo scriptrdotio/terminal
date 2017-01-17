@@ -17,6 +17,7 @@ body {
    line-height: 14px;
    padding:0px;
 }
+.clearfix {clear: both;}
 
 .white {
    color: #111;
