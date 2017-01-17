@@ -23,16 +23,8 @@ Commands can be used to invoke certain functions.
 - ws: invokes an endpoint by using websocket connection
 
 ### How To Use
-- Deploy the aforementioned scripts in your scriptr account, in a folder named "terminal" or access the Terminal directly using the tabs in the top right corner of the scriptr.io page
+- Access the Terminal directly using the tabs in the top right corner of the scriptr.io page
 - Obtain access / anonymous tokens from scriptr.io Account overlay
-
-### AutoExec
-Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
-For example invoking:
-```
-theme white
-```
-Results in a white terminal.
 
 ### Using the Terminal
 Create a test script in scriptr.
