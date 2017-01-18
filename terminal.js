@@ -153,7 +153,7 @@ window.scriptr.terminal.Interpreter.add({
     term.echo(welcome, {raw:true})
     term.echo(greeting, {raw:true})
   },
-  help: "try it!"
+  help: "Try it!"
 })
 
 window.scriptr.terminal.Interpreter.add({
