@@ -8,16 +8,16 @@ The purpose of this connector is to simplify invoking enpoints. It is also a ver
 Commands can be used to invoke certain functions.
 - about: displays the Welcome to scriptr.io Terminal
 - clear: clears the screen
-- delete: invokes the HTTP delete method
+- delete: invokes the HTTP delete method on scripts
 - echo: prints the name on screen
-- get: invokes the HTTP get method
+- get: invokes the HTTP get method on scripts
 - help: invokes help
 - history: shows history of typed commands
 - mapCommand: maps parameters to invoke scripts from command line without having to create a JSON
-- option: invokes the HTTP option method
-- patch: invokes the HTTP patch method
+- option: invokes the HTTP option method on scripts
+- patch: invokes the HTTP patch method on scripts
 - post: invokes the HTTP post method (Default if command is not entered)
-- put: invokes the HTTP put method
+- put: invokes the HTTP put method on scripts
 - set: sets various terminal options
 - theme: changes the terminal theme to white or default
 - ws: invokes an endpoint by using websocket connection
@@ -47,6 +47,14 @@ return returnedValue;
 This test script can be used an example to explain the commonly-used commands:
 
 #### delete, get, option, patch, post, & put
+
+- -p:parameters to pass
+- -h: headers to pass
+- -nolog: logs show in the request
+- -norespsonse: only logs should show
+
+The following tests use the POST method
+
 Invoking:
 ```
 test -p {"color" : "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} 
@@ -160,6 +168,9 @@ Script response (hiding response.metadata.scriptLog):
 }
 ```
 #### ws
+
+Using this command, a websocket connection is created and then the script is invoked.
+
 Invoking:
 ```
 ws test -p {"color": "blue"}
