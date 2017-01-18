@@ -23,7 +23,7 @@ Commands can be used to invoke certain functions.
 - ws: invokes an endpoint by using websocket connection
 
 ### How To Use
-- Access the Terminal directly using the tabs in the top right corner of the scriptr.io page
+- Access the Terminal directly using the tabs in the top right corner of the scriptr.io workspace
 - Obtain access / anonymous tokens from scriptr.io Account overlay
 
 ### Using the Terminal
@@ -44,7 +44,7 @@ if(request.parameters['color']){
 
 return returnedValue;
 ```
-This test script can be used an example to explain the commonly-used commands:
+This test script can be used as an example to explain the commonly-used commands:
 
 #### delete, get, option, patch, post, & put
 
