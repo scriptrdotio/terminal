@@ -27,7 +27,7 @@ Commands can be used to invoke certain functions.
 - Obtain access / anonymous tokens from scriptr.io Account overlay
 
 ### Using the Terminal
-Create a test script in scriptr.
+Create a test script in scriptr: call it colorMe.js
 ```
 console.log(request.method);
 
@@ -57,7 +57,7 @@ The following tests use the POST method
 
 Invoking:
 ```
-test -p {"color" : "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} 
+colorMe -p {"color" : "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} 
 ```
 Results in:
 ```
@@ -85,7 +85,7 @@ Script response (hiding response.metadata.scriptLog):
 ```
 Invoking:
 ```
-test -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -nolog
+colorMe -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -nolog
 ```
 Results in:
 ```
@@ -102,19 +102,19 @@ Script response (hiding response.metadata.scriptLog):
                 {
                     "timestamp": "2017-01-13 13:51:22.718",
                     "level": "log",
-                    "component": "test",
+                    "component": "colorMe",
                     "message": "POST"
                 },
                 {
                     "timestamp": "2017-01-13 13:51:22.718",
                     "level": "log",
-                    "component": "test",
+                    "component": "colorMe",
                     "message": "content type is set"
                 },
                 {
                     "timestamp": "2017-01-13 13:51:22.718",
                     "level": "log",
-                    "component": "test",
+                    "component": "colorMe",
                     "message": "color parameter is set"
                 }
             ],
@@ -129,7 +129,7 @@ Script response (hiding response.metadata.scriptLog):
 ```
 Invoking:
 ```
-test -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -noresponse
+colorMe -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -noresponse
 ```
 Results in:
 ```
@@ -141,8 +141,8 @@ Log (extracted from response.metadata.scriptLog):
 #### mapCommand
 Invoking:
 ```
-mapCommand test color
-test blue
+mapCommand colorMe color
+colorMe blue
 ```
 Results in:
 ```
@@ -173,7 +173,7 @@ Using this command, a websocket connection is created and then the script is inv
 
 Invoking:
 ```
-ws test -p {"color": "blue"}
+ws colorMe -p {"color": "blue"}
 ```
 Results in:
 ```
