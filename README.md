@@ -27,7 +27,7 @@ Commands can be used to invoke certain functions.
 - Obtain access / anonymous tokens from scriptr.io Account overlay
 
 ### Using the Terminal
-Create a test script in scriptr: call it colorMe.js
+Create a test script in scriptr: call it colorMe
 ```
 console.log(request.method);
 
