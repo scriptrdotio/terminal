@@ -16,7 +16,7 @@ Commands can be used to invoke certain functions.
 - mapCommand: maps parameters to invoke scripts from command line without having to create a JSON
 - option: invokes the HTTP option method on scripts
 - patch: invokes the HTTP patch method on scripts
-- post: invokes the HTTP post method (Default if command is not entered)
+- post: invokes the HTTP post method on scripts (Default if command is not entered)
 - put: invokes the HTTP put method on scripts
 - set: sets various terminal options
 - theme: changes the terminal theme to white or default
