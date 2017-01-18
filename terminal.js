@@ -46,12 +46,30 @@ function syntaxHighlight(json) {
 
 function parseForParam(command, paramName, expectJson) {
   var t = command.trim().split(paramName+" ")
-  var params
+  var params;
   if (t.length==2) {
     try{
       params = t[1].trim()
-      if (expectJson) 
-        params = JSON.parse(params.substring(params.indexOf("{") , params.lastIndexOf("}") + 1).replace(/\s/g, ''));
+      if (expectJson) {
+        var str = "";
+        params = params.substring(params.indexOf("{") , params.lastIndexOf("}") + 1).replace(/\n/g, '');
+        var found = 0 ; 
+        for(var i = 0; i < params.length; i ++){ 
+          var value = params[i];
+          str = str + value;
+          if(value == "{"){
+            found++;
+          }else{
+            if(value =="}" && found == 1)
+              break;
+            if(value == "}")
+              found--;
+          }
+        }; 
+        
+        params = JSON.parse(str);
+
+      }
       else 
         params = params.split(" ")[0].trim()
       return params
