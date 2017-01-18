@@ -251,7 +251,7 @@ window.scriptr.terminal.Interpreter.add({
       })
     }
   },
-  help: "Map paramters to simplify invoking scripts from command line without having to create a JSON."
+  help: "Map parameters to simplify invoking scripts from command line without having to create a JSON."
 })
 
 window.scriptr.terminal.Interpreter.add({
