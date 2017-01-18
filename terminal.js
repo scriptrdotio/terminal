@@ -50,7 +50,10 @@ function parseForParam(command, paramName, expectJson) {
   if (t.length==2) {
     try{
       params = t[1].trim()
-      if (expectJson) params = JSON.parse(params.split("}")[0] + "}"); else params = params.split(" ")[0].trim()
+      if (expectJson) 
+        params = JSON.parse(params.substring(params.indexOf("{") , params.lastIndexOf("}") + 1).replace(/\s/g, ''));
+      else 
+        params = params.split(" ")[0].trim()
       return params
     } catch (e) {
       throw new Error (300, (expectJson)?(paramName+" parameter JSON argument not valid"):(paramName+" argument not valid"), command.indexOf(paramName))
