@@ -10,7 +10,7 @@ function registerHTTPVerb(method) {
 
     var p = {
       url: url,
-      data: params,
+      data: JSON.stringify(params),
       headers: headers,
       method: method,
       dataType: 'json',
