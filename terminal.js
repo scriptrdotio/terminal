@@ -187,9 +187,10 @@ window.scriptr.terminal.Interpreter.add({
   command: "help",
   handler: function(params, term) {
     if (params) {
+      params = params.trim();
       var i = window.scriptr.terminal.Interpreter
       if (i.hasCommand(params)) {
-        var html = (typeof i.getCommand(params).help == "string")?i.getCommand(params).help:jQuery("#"+i.getCommand(params).help.id).html()
+        var html = (typeof i.getCommand(params).help == "string")?i.getCommand(params.trim()).help:jQuery("#"+i.getCommand(params).help.id).html()
 
         if (html) {
           var template = _.template(html)
@@ -199,7 +200,7 @@ window.scriptr.terminal.Interpreter.add({
         term.echo("<b>"+params+"</b> - "+html, {raw:true})
         term.echo(" ")
       } else {
-        term.echo("<b>"+params+"</b> - not a command.", {raw:true})
+        term.echo("<b>"+params+"</b> - Not a command.", {raw:true})
         term.echo(" ")
       }
     } else {
