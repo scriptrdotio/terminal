@@ -4,15 +4,20 @@ function registerHTTPVerb(method) {
 	if(script.charAt(0) == "/"){
       script = script.substring(1,script.length);
     }
-    
+    var processData = true;
     var url = (url.slice(-1) == "/") ? "/" + script : "https://"+ url + "/" + script;
     var timestamp = (new Date()).getTime()
-
+ 	if(method.toLowerCase().trim() == "post" && headers['content-type'] && headers['content-type'].toLowerCase().trim() == "application/json"){
+      params = JSON.stringify(params);
+      processData = false;
+    }
+      
     var p = {
       url: url,
       data: params,
       headers: headers,
       method: method,
+      'processData': processData,
       dataType: 'json',
       success: function(data) {
         var hiddenLog = false

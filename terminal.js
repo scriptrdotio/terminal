@@ -52,18 +52,28 @@ function parseForParam(command, paramName, expectJson) {
       params = t[1].trim()
       if (expectJson) {
         var str = "";
+        var readingValue = false;
         params = params.substring(params.indexOf("{") , params.lastIndexOf("}") + 1).replace(/\n/g, '');
         var found = 0 ; 
         for(var i = 0; i < params.length; i ++){ 
           var value = params[i];
           str = str + value;
-          if(value == "{"){
-            found++;
-          }else{
-            if(value =="}" && found == 1)
-              break;
-            if(value == "}")
-              found--;
+          if(value =='"' && params[i-1] && params[i-1] != "\\" ){
+            if(!readingValue)
+               readingValue = true;
+          	else
+              readingValue = false;
+          }
+          
+          if(!readingValue){
+            if(value == "{"){
+              found++;
+            }else{
+              if(value =="}" && found == 1)
+                break;
+              if(value == "}")
+                found--;
+            }
           }
         }; 
         
@@ -74,7 +84,7 @@ function parseForParam(command, paramName, expectJson) {
         params = params.split(" ")[0].trim()
       return params
     } catch (e) {
-      throw new Error (300, (expectJson)?(paramName+" parameter JSON argument not valid"):(paramName+" argument not valid"), command.indexOf(paramName))
+      throw new Error ((expectJson)?(paramName+" parameter JSON argument not valid"):(paramName+" argument not valid"), command.indexOf(paramName))
     }
   }
 }
