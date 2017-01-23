@@ -22,9 +22,13 @@ Commands can be used to invoke certain functions.
 - theme: changes the terminal theme to white or default
 - ws: invokes an endpoint by using websocket connection
 
+
 ### How To Use
 - Access the Terminal directly using the tabs in the top right corner of the scriptr.io workspace
 - Obtain access / anonymous tokens from scriptr.io Account overlay
+
+### AutoExec
+-  Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
 
 ### Using the Terminal
 Create a test script in scriptr: call it colorMe
@@ -48,16 +52,16 @@ This test script can be used as an example to explain the commonly-used commands
 
 #### delete, get, option, patch, post, & put
 
-- -p:parameters to pass
-- -h: headers to pass
-- -nolog: logs show in the request
-- -norespsonse: only logs should show
+- -d:parameters to pass
+- -H: headers to pass
+- --no-log: logs show in the request
+- --no-respsonse: only logs should show
 
 The following tests use the POST method
 
 Invoking:
 ```
-colorMe -p {"color" : "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} 
+colorMe -d {"color" : "blue"} -H {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} 
 ```
 Results in:
 ```
@@ -85,7 +89,7 @@ Script response (hiding response.metadata.scriptLog):
 ```
 Invoking:
 ```
-colorMe -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -nolog
+colorMe -d {"color": "blue"} -H {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} --no-log
 ```
 Results in:
 ```
@@ -129,7 +133,7 @@ Script response (hiding response.metadata.scriptLog):
 ```
 Invoking:
 ```
-colorMe -p {"color": "blue"} -h {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} -noresponse
+colorMe -d {"color": "blue"} -H {"content-type":"application/x-www-form-urlencoded; charset=UTF-8"} --no-response
 ```
 Results in:
 ```
@@ -173,7 +177,7 @@ Using this command, a websocket connection is created and then the script is inv
 
 Invoking:
 ```
-ws colorMe -p {"color": "blue"}
+ws colorMe -d {"color": "blue"}
 ```
 Results in:
 ```
@@ -192,3 +196,9 @@ Script response (hiding response.scriptLog):
     }
 }
 ```
+
+#### set
+Sets various terminal options. Set token can be used to change the user calling the script.
+
+### history
+Shows history of typed commands. Does not show set token="value" history. History can be cleared using history -clear
