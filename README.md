@@ -25,7 +25,9 @@ Commands can be used to invoke certain functions.
 
 ### How To Use
 - Access the Terminal directly using the tabs in the top right corner of the scriptr.io workspace
+- Or install the Terminal module located in the Modules list below.
 - Obtain access / anonymous tokens from scriptr.io Account overlay
+
 
 ### AutoExec
 -  Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
