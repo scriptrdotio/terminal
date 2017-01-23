@@ -85,23 +85,23 @@ function registerHTTPVerb(method) {
       var _url
 
       try {
-        parameters = parseForParam(params, "-p", true)
+        parameters = parseForParam(params, "-d", true)
         _url = parseForParam(params, "-u")
         if (_url) url = _url
-        var showResponse = (params.indexOf("-noresponse")<0)
+        var showResponse = (params.indexOf("--no-response")<0)
 
         var headers = {}   
 
         if (window.scriptr.terminal.token!="") headers['Authorization']='bearer '+window.scriptr.terminal.token
 
-        jQuery.extend(headers, parseForParam(params, "-h", true))
+        jQuery.extend(headers, parseForParam(params, "-H", true))
 
         var repeat = 1
-        repeat = parseForParam(params, "-repeat")
+        repeat = parseForParam(params, "--repeat")
         if (!repeat) repeat=1
 
         var showLogs = false
-        showLogs = (params.indexOf("-nolog")<0)
+        showLogs = (params.indexOf("--no-log")<0)
 
         http(method, url, script, parameters, headers, showResponse, showLogs, repeat, term)
 

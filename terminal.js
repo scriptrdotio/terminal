@@ -238,8 +238,8 @@ window.scriptr.terminal.Interpreter.add({
         params.substring(params.indexOf('-description'))
       }
 
-      var noresponse = params.indexOf('-noresponse')>0
-      var nolog = params.indexOf('-nolog')>0
+      var noresponse = params.indexOf('--no-response')>0
+      var nolog = params.indexOf('--no-log')>0
 
       window.scriptr.terminal.Interpreter.add({
         command: t[0],
@@ -253,7 +253,7 @@ window.scriptr.terminal.Interpreter.add({
             json[paramList[i+1]] = params[i]
             i++
           })
-          var command = "post "+t[0]+" -p "+JSON.stringify(json)+ (noresponse?" -noresponse":"") + (nolog?" -nolog":"")
+          var command = "post "+t[0]+" -d "+JSON.stringify(json)+ (noresponse?" --no-response":"") + (nolog?" --no-log":"")
           term.history().disable()
           term.exec(command, true)
           term.history().enable()

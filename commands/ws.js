@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
       "method":t[0], //the "translate" method is a user script that translates messages from English to French.
       "id": uid, //will be returned as part of the generated id, in order to identify the response
     }
-    var p = parseForParam(params, "-p", true)
+    var p = parseForParam(params, "-d", true)
     if (p) message.params = p
 
     window.websocketClient.send(JSON.stringify(message));        
@@ -23,8 +23,8 @@ jQuery(document).ready(function($) {
       var uid = getUid()
 
       var timestamp = (new Date()).getTime()
-      var showResponse = (params.indexOf("-noresponse")<0)
-      showLogs = (params.indexOf("-nolog")<0)
+      var showResponse = (params.indexOf("--no-response")<0)
+      showLogs = (params.indexOf("--no-log")<0)
 
       if (!window.websocketClient) {
         term.pause()

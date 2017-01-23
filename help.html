@@ -40,24 +40,24 @@
 Invokes a scriptr.io endpoint by using a websocket connection<br><br>
 <pre>
 parameters:
- -p &lt;JSON&gt;:	request params
- -nolog:	don't show logs
- -noresponse:	don't show response
+ -d &lt;JSON&gt;:	request params
+ --no-log:	don't show logs
+ --no-response:	don't show response
 </pre>
-<br>example:<br>ws my/script -p {"humidity": "33", "temp": "22"} -noresponse -nolog<br>
+<br>example:<br>ws my/script -d {"humidity": "33", "temp": "22"} --no-response --no-log<br>
 </div>
 
 <div id="help-rest">
 Invokes a scriptr.io endpoint by using HTTP {{ method }}.<br><br>
 <pre>
 parameters:
- -p &lt;JSON&gt;:	request params
- -h &lt;JSON&gt;:	request headers
- -nolog:	don't show logs
- -noresponse:	don't show response
+ -d &lt;JSON&gt;:	request params
+ -H &lt;JSON&gt;:	request headers
+ --no-log:	don't show logs
+ --no-response:	don't show response
 <!-- -repeat N:	repeat call N times and display average/min/max execution times [NOT IMPLEMENTED] -->
 </pre>
-<br>example:<br>{{ method }} my/script -p {"humidity": "33", "temp": "22"} -h {"header1":"value1"} -noresponse -nolog -repeat 10<br>
+<br>example:<br>{{ method }} my/script -d {"humidity": "33", "temp": "22"} -H {"header1":"value1"} --no-response --no-log<br>
 </div>
 
 <div id="help-list">
