@@ -200,5 +200,5 @@ Script response (hiding response.scriptLog):
 #### set
 Sets various terminal options. Set token can be used to change the user calling the script.
 
-### history
+#### history
 Shows history of typed commands. Does not show set token="value" history. History can be cleared using history -clear
