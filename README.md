@@ -149,6 +149,10 @@ Log (extracted from response.metadata.scriptLog):
 2017-01-13 13:42:24,460 LOG color parameter is set
 ```
 #### mapCommand
+
+- --no-log: logs show in the request
+- --no-respsonse: only logs should show
+
 Invoking:
 ```
 mapCommand colorMe color
