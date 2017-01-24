@@ -25,12 +25,16 @@ Commands can be used to invoke certain functions.
 
 ### How To Use
 - Access the Terminal directly using the tabs in the top right corner of the scriptr.io workspace
-- Or install the Terminal module located in the Modules list below.
 - Obtain access / anonymous tokens from scriptr.io Account overlay
 
+### AutoExec 
+- Scriptr.io terminal is an online command line tool for invoking endpoints using different protocols and options. Installing this module will download the latest revision of the currently available terminal feature (accessible from the top right menu) and automatically replace it. This allows developers to customize it by modifying its source code.
+- Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
 
-### AutoExec
--  Commands in Autoexec.terminal on the root folder, will be executed when the terminal is started.
+```
+theme white
+set token=XXXXXXX==
+```
 
 ### Using the Terminal
 Create a test script in scriptr: call it colorMe
