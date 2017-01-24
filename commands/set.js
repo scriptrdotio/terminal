@@ -40,9 +40,9 @@ jQuery(document).ready(function($) {
                 term.set_prompt(userId+"&zwnj;@"+scriptr.terminal.prompt)
                })
             break;
-          case "url":
-            window.scriptr.terminal.url=t[1].trim()
-            break;
+        //  case "url":
+        //    window.scriptr.terminal.url=t[1].trim()
+         //   break;
         }
       } else {
         displayVariables(term)
