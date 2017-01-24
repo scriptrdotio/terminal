@@ -152,7 +152,7 @@ Log (extracted from response.metadata.scriptLog):
 Invoking:
 ```
 mapCommand colorMe color
-colorMe blue
+colorMe "blue"
 ```
 Results in:
 ```
