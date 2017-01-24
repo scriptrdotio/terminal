@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 
   function displayVariables(term) {
     term.echo("token="+window.scriptr.terminal.token)
-    term.echo("url="+window.scriptr.terminal.url)
+   // term.echo("url="+window.scriptr.terminal.url)
     term.echo(" ")
   }
   
