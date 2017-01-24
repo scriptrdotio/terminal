@@ -251,7 +251,7 @@ window.scriptr.terminal.Interpreter.add({
           var resultParm = [];
           if(params){
             var readingValue = false ; 
-            var str = "";
+            var str = '';
             for(var i = 0; i < params.length; i ++){ 
               var value = params[i];
                 if(value =='"' && (!params[i-1] ||  params[i-1] != '\\')) {
@@ -259,7 +259,7 @@ window.scriptr.terminal.Interpreter.add({
                     readingValue = true;
                   else{
                     readingValue = false;
-                    resultParm.push(str);
+                    resultParm.push(str.replace(/\\"/g , '"'));
                     str = ""
                   }
                 }else{
@@ -274,9 +274,10 @@ window.scriptr.terminal.Interpreter.add({
           i = 0
 			
           resultParm.forEach(function() {
-            json[paramList[i+1]] = resultParm[i]
+            json[paramList[i+1]] = resultParm[i];
             i++
           })
+          
           var command = "post "+t[0]+" -d "+JSON.stringify(json)+ (noresponse?" --no-response":"") + (nolog?" --no-log":"")
           term.history().disable()
           term.exec(command, true)
