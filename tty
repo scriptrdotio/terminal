@@ -27,6 +27,7 @@
             return sParameterName[1];
           }
         }
+        return "";
       }
 
       /*
