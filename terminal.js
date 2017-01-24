@@ -226,9 +226,12 @@ window.scriptr.terminal.Interpreter.add({
 window.scriptr.terminal.Interpreter.add({
   command: 'mapCommand',
   handler: function(params, term) {
+    if(!params)
+      return;
+    
     var help = ""
     var paramList = []
-    var t = params.split(" ")
+    var t =  params ? params.split(" ") : [];
     paramList = t
     if (params.indexOf('-delete')>0) {
       delete map[t[0]]
@@ -245,12 +248,33 @@ window.scriptr.terminal.Interpreter.add({
         command: t[0],
         handler: function(params, term){
           var json = {}
-    
-          params = params ? params.split(" ") : [];
-          i = 0
+          var resultParm = [];
+          if(params){
+            var readingValue = false ; 
+            var str = "";
+            for(var i = 0; i < params.length; i ++){ 
+              var value = params[i];
+                if(value =='"' && (!params[i-1] ||  params[i-1] != '\\')) {
+                  if(!readingValue)
+                    readingValue = true;
+                  else{
+                    readingValue = false;
+                    resultParm.push(str);
+                    str = ""
+                  }
+                }else{
+                  if(readingValue)
+                 	 str = str + value;
+                }
 
-          params.forEach(function() {
-            json[paramList[i+1]] = params[i]
+            }
+          }; 
+     
+          //params = params ? params.match(/(".*?"|[^"\s]+)+(?=\s*|\s*$)/g): [];
+          i = 0
+			
+          resultParm.forEach(function() {
+            json[paramList[i+1]] = resultParm[i]
             i++
           })
           var command = "post "+t[0]+" -d "+JSON.stringify(json)+ (noresponse?" --no-response":"") + (nolog?" --no-log":"")
