@@ -68,10 +68,15 @@ Lists scripts available on the account.
 
 <div id="help-mapCommand">
 Maps the parameters of any command to simplify invoking scripts from command line without having to create a JSON.
-<br>Example:<br>
-mapCommand myTestScript param1 param2<br><br>
-Now when you call the script called "myTestScript", instead of passing its parameters "param1" and "param2" in a JSON object, you can simply call it as follows:<br>
-myTestScript "Hello" "world!"
+<pre>
+Parameters:
+ --no-log:	don't show logs
+ --no-response:	don't show response
+</pre>
+<br>Example:<br>mapCommand my/script humidity temp --no-response --no-log<br>
+<br>
+Now when you call the script called "my/script", instead of passing its parameters "param1" and "param2" in a JSON object, you can simply call it as follows:<br>
+my/script "33" "22"
 </div>
 <div id="help-set">
 Sets the token to be used by the terminal to invoke scriptr.io scripts.<br><br>
