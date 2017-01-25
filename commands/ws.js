@@ -20,6 +20,9 @@ jQuery(document).ready(function($) {
   var ws = {
     command: "ws",
     handler: function(params, term){
+      if(!params)
+        return;
+      
       var uid = getUid()
 
       var timestamp = (new Date()).getTime()

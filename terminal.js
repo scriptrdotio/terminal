@@ -293,6 +293,8 @@ window.scriptr.terminal.Interpreter.add({
 window.scriptr.terminal.Interpreter.add({
   command: 'theme',
   handler: function(params, term) {
+    if(!params)
+      return;
     switch(params.toLowerCase()){
       case "default":
         $('.terminal').removeClass('white');
