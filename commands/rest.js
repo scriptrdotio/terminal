@@ -61,7 +61,7 @@ function registerHTTPVerb(method) {
             term.resume()
           }
         } catch(e) {
-          term.echo("Error! probably due to a bad token or CORS setting.")
+          term.echo(data.responseText)
           term.echo(" ")
           term.resume()
         }
