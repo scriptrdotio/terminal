@@ -42,6 +42,8 @@ jQuery(document).ready(function($) {
       }
 
       window.websocketClient.onclose = function (event) {
+        window.websocketClient = null;
+        term.echo(event.reason);
         term.resume()
       }
 
