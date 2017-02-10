@@ -56,7 +56,7 @@ function registerHTTPVerb(method) {
         try {
           if (data.responseJSON.response.metadata.status == 'failure') {
             term.echo("Request execution time: "+((new Date()).getTime()-timestamp)+"ms",{raw:true})
-            term.echo("operation failed with error code: "+data.responseJSON.response.metadata.errorCode,{raw:true})
+            term.echo("Operation failed with error code: "+data.responseJSON.response.metadata.errorCode,{raw:true})
             term.echo(data.responseJSON.response.metadata.errorDetail,{raw:true})
             term.resume()
           }
